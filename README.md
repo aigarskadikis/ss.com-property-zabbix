@@ -1,6 +1,6 @@
-ss.com-property-zabbix
-======================
+# ss.com-property-zabbix
 
+```
 {
   "data": [
     {
@@ -32,23 +32,35 @@ ss.com-property-zabbix
     }
   ]
 }
+```
 
-Dependencies
-------------
+## Dependencies
 
 * Install external script
+```
 cd /usr/lib/zabbix/externalscripts
 curl https://raw.githubusercontent.com/catonrug/externalscripts/master/ss-com-property-discover.sh > ss-com-property-discover.sh
 chmod 770 ss-com-property-discover.sh
 chown zabbix. ss-com-property-discover.sh
-
-* Test script
-./ss-com-property-discover.sh https://www.ss.com/lv/real-estate/flats/riga/all/hand_over > ~/hand.over.json
+```
 
 * Install jq utility to beautifull the output
-apt install jq # on ubuntu, debian
-curl -sL https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -o /usr/bin/jq && chmod +x /usr/bin/jq # on centos
+```
+# on ubuntu, debian
+apt install jq
 
-* test recieved content
+# on centos, rhel
+curl -sL https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -o /usr/bin/jq && chmod +x /usr/bin/jq
+```
+
+## Fetch the data
+
+```
+cd /usr/lib/zabbix/externalscripts
+./ss-com-property-discover.sh https://www.ss.com/lv/real-estate/flats/riga/all/hand_over > ~/hand.over.json
+```
+
+## Output on screen
+```
 jq . ~/hand.over.json
-
+```
