@@ -1,0 +1,1 @@
+# ss.com-property-zabbix
