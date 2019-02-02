@@ -40,8 +40,11 @@
 ```
 cd /usr/lib/zabbix/externalscripts
 curl https://raw.githubusercontent.com/catonrug/externalscripts/master/ss-com-property-discover.sh > ss-com-property-discover.sh
+curl https://raw.githubusercontent.com/catonrug/externalscripts/master/ss-com-deliver-json.sh > ss-com-deliver-json.sh
 chmod 770 ss-com-property-discover.sh
+chmod 770 ss-com-deliver-json.sh
 chown zabbix. ss-com-property-discover.sh
+chown zabbix. ss-com-deliver-json.sh
 ```
 
 ### Install jq utility on ubuntu, debian, raspiban
@@ -51,6 +54,16 @@ apt install jq
 ### Install jq utility on CentOS, RHEL
 ```
 curl -sL https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -o /usr/bin/jq && chmod +x /usr/bin/jq
+```
+
+### Install other linux user "ss.com" which will be responsible about task
+```
+groupadd ss.com
+useradd -s /sbin/nologin -g ss.com ss.com
+usermod -a -G zabbix ss.com
+grep ss.com /etc/passwd
+id ss.com
+chmod -R 770 /usr/lib/zabbix/externalscripts/*
 ```
 
 ## Fetch the "hand over" data 
@@ -70,3 +83,13 @@ cd /usr/lib/zabbix/externalscripts
 jq . ~/zbx.ss.com.hand.over.json
 jq . ~/zbx.ss.com.sell.json
 ```
+
+## Install template
+https://github.com/catonrug/ss.com-property-zabbix/blob/master/ss.com-property.xml
+
+## Create host
+create a host "ss.com flats hand over" and attach the template "ss.com property"
+create a host "ss.com flats sell" and attach the template "ss.com property"
+
+
+
