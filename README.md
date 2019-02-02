@@ -36,7 +36,7 @@
 
 ## Dependencies
 
-* Install external script
+### Install external script
 ```
 cd /usr/lib/zabbix/externalscripts
 curl https://raw.githubusercontent.com/catonrug/externalscripts/master/ss-com-property-discover.sh > ss-com-property-discover.sh
@@ -44,23 +44,29 @@ chmod 770 ss-com-property-discover.sh
 chown zabbix. ss-com-property-discover.sh
 ```
 
-* Install jq utility to beautifull the output
+### Install jq utility on ubuntu, debian, raspiban
 ```
-# on ubuntu, debian
 apt install jq
-
-# on centos, rhel
+```
+### Install jq utility on CentOS, RHEL
+```
 curl -sL https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -o /usr/bin/jq && chmod +x /usr/bin/jq
 ```
 
-## Fetch the data
-
+## Fetch the "hand over" data 
 ```
 cd /usr/lib/zabbix/externalscripts
-./ss-com-property-discover.sh https://www.ss.com/lv/real-estate/flats/riga/all/hand_over > ~/hand.over.json
+./ss-com-property-discover.sh https://www.ss.com/lv/real-estate/flats/riga/all/hand_over > ~/zbx.ss.com.hand.over.json
+```
+
+## Fetch the "sell" data
+```
+cd /usr/lib/zabbix/externalscripts
+./ss-com-property-discover.sh https://www.ss.com/lv/real-estate/flats/riga/all/sell/ > ~/zbx.ss.com.sell.json
 ```
 
 ## Output on screen
 ```
-jq . ~/hand.over.json
+jq . ~/zbx.ss.com.hand.over.json
+jq . ~/zbx.ss.com.sell.json
 ```
