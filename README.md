@@ -38,53 +38,45 @@
 
 ### Global regular expressions
 
-![Global Regular Expression](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/ss.com-global-regex.png)
 
 #### ss.com property urls
 ```
-Expression type: Result is TRUE
-Expression:
+Expression type: Result is TRUE, Expression:
 mezhciems|purvciems|plyavnieki|teika
 ```
 
 #### ss.com flats hand over price
 ```
-Expression type: Result is TRUE
-Expression:
+Expression type: Result is TRUE, Expression:
 ^(1[0-4][0-9]|[0-9][0-9]|150) .*$
-Expression type: Result is FALSE
-Expression:
+
+Expression type: Result is FALSE, Expression:
 day|week
 ```
 
 #### ss.com flats hand over sqm
 ```
-Expression type: Result is TRUE
-Expression:
+Expression type: Result is TRUE, Expression:
 ^(2[1-9]|3[0-9])$
 ```
 
 #### ss.com flats hand over type
 ```
-Expression type: Result is TRUE
-Expression:
+Expression type: Result is TRUE, Expression:
 ^602
 ```
 
 #### ss.com flats sell price
 ```
-Expression type: Result is TRUE
-Expression:
+Expression type: Result is TRUE, Expression:
 ^(1)?[0-9],
 ```
 
 #### ss.com flats sell type
 ```
-Expression type: Result is TRUE
-Expression:
+Expression type: Result is TRUE, Expression:
 LT proj|602|M. im.
 ```
-
 
 ### Install external script
 ```
@@ -146,4 +138,26 @@ In a template there is defined
 ## Create host
 create a host "ss.com flats hand over" and attach the template "ss.com property"
 create a host "ss.com flats sell" and attach the template "ss.com property"
+
+## create a cronjob
+```
+*/15 * * * * ss.com cd /usr/lib/zabbix/externalscripts && ./ss-com-deliver-json.sh "ss.com flats hand over" https://www.ss.com/en/real-estate/flats/riga/all/hand_over /dev/shm
+50 * * * * ss.com cd /usr/lib/zabbix/externalscripts && ./ss-com-deliver-json.sh "ss.com flats sell" https://www.ss.com/en/real-estate/flats/riga/all/sell/ /dev/shm
+```
+
+### How it works
+All filtering happens through global regular expression section
+![Global Regular Expression](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/ss.com-global-regex.png)
+
+We have a basic filtering in template level:
+![Template level filtering](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/filters-template.png)
+
+For "hand over" host we got:
+![Host level filtering](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/filters-hand-over.png)
+
+For "sell" host we got:
+![Host level filtering](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/filters-sell.png)
+
+Be carefull when modify template Filters. It will totaly override (delete everything) in host level filtering!
+
 
