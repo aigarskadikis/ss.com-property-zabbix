@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2019-02-03T14:53:37Z</date>
+    <date>2019-02-03T16:31:00Z</date>
     <groups>
         <group>
             <name>Templates/Web Monitoring</name>
@@ -193,16 +193,10 @@
                         <formula/>
                         <conditions>
                             <condition>
-                                <macro>{#SQM}</macro>
-                                <value>^([0-3][0-9])$</value>
+                                <macro>{#URL}</macro>
+                                <value>@ss.com property urls</value>
                                 <operator>8</operator>
                                 <formulaid>A</formulaid>
-                            </condition>
-                            <condition>
-                                <macro>{#URL}</macro>
-                                <value>@property urls</value>
-                                <operator>8</operator>
-                                <formulaid>B</formulaid>
                             </condition>
                         </conditions>
                     </filter>
@@ -539,14 +533,14 @@
                             <dependencies>
                                 <dependency>
                                     <name>{#ZBX.SS.COM.TEMP} do not exist</name>
-                                    <expression>{ss.com property:vfs.file.exists[{#ZBX.SS.COM.TEMP}].min(6h)}&gt;0</expression>
+                                    <expression>{ss.com property:vfs.file.exists[{#ZBX.SS.COM.TEMP}].max(6h)}=0</expression>
                                     <recovery_expression/>
                                 </dependency>
                             </dependencies>
                             <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{ss.com property:vfs.file.exists[{#ZBX.SS.COM.TEMP}].min(6h)}&gt;0</expression>
+                            <expression>{ss.com property:vfs.file.exists[{#ZBX.SS.COM.TEMP}].max(6h)}=0</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
                             <name>{#ZBX.SS.COM.TEMP} do not exist</name>
@@ -562,7 +556,7 @@
                             <tags/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{ss.com property:vfs.file.time[{#ZBX.SS.COM.TEMP}].now()}&gt;8h</expression>
+                            <expression>{ss.com property:vfs.file.time[{#ZBX.SS.COM.TEMP}].now()}-{ss.com property:vfs.file.time[{#ZBX.SS.COM.TEMP}].last()}&gt;8h</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
                             <name>{#ZBX.SS.COM.TEMP} has not been modified in last 8h</name>
@@ -577,7 +571,7 @@
                             <dependencies>
                                 <dependency>
                                     <name>{#ZBX.SS.COM.TEMP} do not exist</name>
-                                    <expression>{ss.com property:vfs.file.exists[{#ZBX.SS.COM.TEMP}].min(6h)}&gt;0</expression>
+                                    <expression>{ss.com property:vfs.file.exists[{#ZBX.SS.COM.TEMP}].max(6h)}=0</expression>
                                     <recovery_expression/>
                                 </dependency>
                             </dependencies>
