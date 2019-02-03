@@ -174,10 +174,8 @@ For "sell" host we got extra definition on price:
 
 Be carefull when modify template Filters. It will totaly override (delete everything) in host level filtering!
 
-
 ## Events
-
-
+![Events](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/ss.com-property-in-use.png)
 
 ## Action
 Condition must match the template name
