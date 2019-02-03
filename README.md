@@ -112,7 +112,7 @@ cd /usr/lib/zabbix/externalscripts
 ## Fetch the "sell" data
 ```
 cd /usr/lib/zabbix/externalscripts
-./ss-com-property-discover.sh https://www.ss.com/lv/real-estate/flats/riga/all/sell/ > ~/zbx.ss.com.sell.json
+./ss-com-property-discover.sh https://www.ss.com/lv/real-estate/flats/riga/all/sell > ~/zbx.ss.com.sell.json
 ```
 
 ## Output on screen
@@ -121,11 +121,9 @@ jq . ~/zbx.ss.com.hand.over.json
 jq . ~/zbx.ss.com.sell.json
 ```
 
-## Install template
-https://github.com/catonrug/ss.com-property-zabbix/blob/master/ss.com-property.xml
+## Install [ss.com-property.xml](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/ss.com-property.xml)
 In a template there is defined
 ```
-{#SQM} = ^([0-3][0-9])$
 {#URL} = @ss.com property urls
 ```
 
@@ -162,7 +160,7 @@ cat /etc/crontab
 */15 * * * * ss.com cd /usr/lib/zabbix/externalscripts && ./ss-com-deliver-json.sh "ss.com flats hand over" https://www.ss.com/en/real-estate/flats/riga/all/hand_over /dev/shm
 
 # properties for selling will be detected every hour
-50 * * * * ss.com cd /usr/lib/zabbix/externalscripts && ./ss-com-deliver-json.sh "ss.com flats sell" https://www.ss.com/en/real-estate/flats/riga/all/sell/ /dev/shm
+50 * * * * ss.com cd /usr/lib/zabbix/externalscripts && ./ss-com-deliver-json.sh "ss.com flats sell" https://www.ss.com/en/real-estate/flats/riga/all/sell /dev/shm
 ```
 
 # Summary, how it works
