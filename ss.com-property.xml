@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2019-02-03T16:31:00Z</date>
+    <date>2019-02-03T17:07:33Z</date>
     <groups>
         <group>
             <name>Templates/Web Monitoring</name>
@@ -19,15 +19,6 @@
             </groups>
             <applications>
                 <application>
-                    <name>file exists</name>
-                </application>
-                <application>
-                    <name>file time</name>
-                </application>
-                <application>
-                    <name>msg flat</name>
-                </application>
-                <application>
                     <name>ss.com json error</name>
                 </application>
                 <application>
@@ -41,6 +32,9 @@
                 </application>
                 <application>
                     <name>ss.com msg count</name>
+                </application>
+                <application>
+                    <name>ss.com msg flat</name>
                 </application>
             </applications>
             <items>
@@ -165,7 +159,7 @@
             </items>
             <discovery_rules>
                 <discovery_rule>
-                    <name>Discover all msg file from on section</name>
+                    <name>Discover all msg items from one section</name>
                     <type>2</type>
                     <snmp_community/>
                     <snmp_oid/>
@@ -201,7 +195,7 @@
                         </conditions>
                     </filter>
                     <lifetime>0</lifetime>
-                    <description>https://github.com/catonrug/externalscripts/blob/master/ss-com-property-discover.sh</description>
+                    <description/>
                     <item_prototypes>
                         <item_prototype>
                             <name>{#URL}</name>
@@ -235,7 +229,7 @@
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
-                                    <name>msg flat</name>
+                                    <name>ss.com msg flat</name>
                                 </application>
                             </applications>
                             <valuemap/>
@@ -333,7 +327,7 @@
                         <conditions/>
                     </filter>
                     <lifetime>30d</lifetime>
-                    <description>Make sure the zabbix sender are doing its job and is not dead</description>
+                    <description>Make sure the zabbix_sender are doing its job and is not dead</description>
                     <item_prototypes>
                         <item_prototype>
                             <name>{#ZBX.SS.COM.TEMP} exists</name>
