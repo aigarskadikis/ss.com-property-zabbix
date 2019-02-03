@@ -58,7 +58,7 @@ day|week
 ```
 
 #### ss.com flats hand over sqm
-Set the square metters intereseted
+Set the square meters intereseted
 ```
 Expression type: Result is TRUE, Expression:
 ^(2[1-9]|3[0-9])$
@@ -167,15 +167,13 @@ cat /etc/crontab
 All filtering happens through global regular expression section
 ![Global Regular Expression](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/ss.com-global-regex.png)
 
-We have a basic filtering in template level:
+We have a basic filtering in template level which will take only the regions we are interested:
 ![Template level filtering](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/filters-template.png)
 
-For "hand over" host we got:
+For "hand over" host we got extra definition for square meters and price:
 ![Host level filtering](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/filters-hand-over.png)
 
-For "sell" host we got:
+For "sell" host we got extra definition on price:
 ![Host level filtering](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/filters-sell.png)
 
 Be carefull when modify template Filters. It will totaly override (delete everything) in host level filtering!
-
-
