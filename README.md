@@ -129,17 +129,43 @@ In a template there is defined
 {#URL} = @ss.com property urls
 ```
 
-## Create host
-create a host "ss.com flats hand over" and attach the template "ss.com property"
-create a host "ss.com flats sell" and attach the template "ss.com property"
-
-## create a cronjob
+## Create host "ss.com flats hand over"
+1) "ss.com flats hand over"
+2) assign template "ss.com property"
+3) go to discovery section. Open discovery "Discover all msg items from one section"
+4) open filter section, add fiters
 ```
+{#PRICE} = @ss.com flats hand over price
+{#SQM} = @ss.com flats hand over sqm
+{#URL} = @ss.com property urls
+```
+![Host level filtering](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/filters-hand-over.png)
+
+
+## Create host "ss.com flats sell"
+1) "ss.com flats sell"
+2) assign template "ss.com property"
+3) go to discovery section. Open discovery "Discover all msg items from one section"
+4) open filter section, add fiters
+```
+{#PRICE} = @ss.com flats sell price
+{#URL} = @ss.com property urls
+```
+![Host level filtering](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/filters-sell.png)
+
+
+## create global cronjob which will run on behalf user 'ss.com'
+```
+cat /etc/crontab
+
+# hand out changes will be detected every 15 minutes
 */15 * * * * ss.com cd /usr/lib/zabbix/externalscripts && ./ss-com-deliver-json.sh "ss.com flats hand over" https://www.ss.com/en/real-estate/flats/riga/all/hand_over /dev/shm
+
+# properties for selling will be detected every hour
 50 * * * * ss.com cd /usr/lib/zabbix/externalscripts && ./ss-com-deliver-json.sh "ss.com flats sell" https://www.ss.com/en/real-estate/flats/riga/all/sell/ /dev/shm
 ```
 
-# How it works
+# Summary, how it works
 All filtering happens through global regular expression section
 ![Global Regular Expression](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/ss.com-global-regex.png)
 
