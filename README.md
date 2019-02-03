@@ -40,6 +40,7 @@
 
 
 #### ss.com property urls
+set which regions you are intereseted the most
 ```
 Expression type: Result is TRUE, Expression:
 mezhciems|purvciems|plyavnieki|teika
@@ -145,7 +146,7 @@ create a host "ss.com flats sell" and attach the template "ss.com property"
 50 * * * * ss.com cd /usr/lib/zabbix/externalscripts && ./ss-com-deliver-json.sh "ss.com flats sell" https://www.ss.com/en/real-estate/flats/riga/all/sell/ /dev/shm
 ```
 
-### How it works
+# How it works
 All filtering happens through global regular expression section
 ![Global Regular Expression](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/ss.com-global-regex.png)
 
