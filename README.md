@@ -42,7 +42,7 @@
 ![Global Regular Expression](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/ss.com-global-regex.png)
 
 #### ss.com property urls
-set which regions you are intereseted the most
+set which regions you are interested the most
 ```
 Expression type: Result is TRUE, Expression:
 mezhciems|purvciems|plyavnieki|teika
@@ -59,7 +59,7 @@ day|week
 ```
 
 #### ss.com flats hand over sqm
-Set the square meters intereseted
+Set the square meters interested
 ```
 Expression type: Result is TRUE, Expression:
 ^(2[1-9]|3[0-9])$
@@ -157,6 +157,8 @@ cat /etc/crontab
 50 * * * * ss.com cd /usr/lib/zabbix/externalscripts && ./ss-com-deliver-json.sh "ss.com flats sell" https://www.ss.com/en/real-estate/flats/riga/all/sell /dev/shm
 ```
 
+
+
 # Summary, how it works
 All filtering happens through global regular expression section
 ![Global Regular Expression](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/ss.com-global-regex.png)
@@ -171,4 +173,26 @@ For "sell" host we got extra definition on price:
 ![Host level filtering](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/filters-sell.png)
 
 Be carefull when modify template Filters. It will totaly override (delete everything) in host level filtering!
+
+
+## Events
+
+
+
+## Action
+Condition must match the template name
+![Condition match template](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/action-condition-match-template-ss.com-property.png)
+
+Operation
+![Operation](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/action-operations.png)
+
+
+Default subject:
+```
+Property: {EVENT.NAME}
+```
+Default message:
+```
+{TRIGGER.DESCRIPTION}
+```
 
