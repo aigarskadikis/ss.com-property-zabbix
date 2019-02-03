@@ -104,35 +104,28 @@ id ss.com
 chmod -R 770 /usr/lib/zabbix/externalscripts/*
 ```
 
-## Fetch the "hand over" data 
+## Fetch and observe "hand over" data 
 ```
 cd /usr/lib/zabbix/externalscripts
 ./ss-com-property-discover.sh https://www.ss.com/lv/real-estate/flats/riga/all/hand_over > ~/zbx.ss.com.hand.over.json
+jq . ~/zbx.ss.com.hand.over.json
 ```
 
-## Fetch the "sell" data
+## Fetch and observe "sell" data
 ```
 cd /usr/lib/zabbix/externalscripts
 ./ss-com-property-discover.sh https://www.ss.com/lv/real-estate/flats/riga/all/sell > ~/zbx.ss.com.sell.json
-```
-
-## Output on screen
-```
-jq . ~/zbx.ss.com.hand.over.json
 jq . ~/zbx.ss.com.sell.json
 ```
 
-## Install [ss.com-property.xml](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/ss.com-property.xml)
-In a template there is defined
-```
-{#URL} = @ss.com property urls
-```
+## Install template
+Uplead [ss.com-property.xml](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/ss.com-property.xml) to you Zabbix instance
 
 ## Create host "ss.com flats hand over"
-1) "ss.com flats hand over"
+1) create host with name "ss.com flats hand over"
 2) assign template "ss.com property"
 3) go to discovery section. Open discovery "Discover all msg items from one section"
-4) open filter section, add fiters
+4) open filter section, make sure we got
 ```
 {#PRICE} = @ss.com flats hand over price
 {#SQM} = @ss.com flats hand over sqm
@@ -142,10 +135,10 @@ In a template there is defined
 
 
 ## Create host "ss.com flats sell"
-1) "ss.com flats sell"
+1) create host with name "ss.com flats sell"
 2) assign template "ss.com property"
 3) go to discovery section. Open discovery "Discover all msg items from one section"
-4) open filter section, add fiters
+4) open filter section, make sure we got
 ```
 {#PRICE} = @ss.com flats sell price
 {#URL} = @ss.com property urls
@@ -157,10 +150,10 @@ In a template there is defined
 ```
 cat /etc/crontab
 
-# hand out changes will be detected every 15 minutes
+# "hand over" changes will be detected every 15 minutes
 */15 * * * * ss.com cd /usr/lib/zabbix/externalscripts && ./ss-com-deliver-json.sh "ss.com flats hand over" https://www.ss.com/en/real-estate/flats/riga/all/hand_over /dev/shm
 
-# properties for selling will be detected every hour
+# Items for selling will be detected every hour
 50 * * * * ss.com cd /usr/lib/zabbix/externalscripts && ./ss-com-deliver-json.sh "ss.com flats sell" https://www.ss.com/en/real-estate/flats/riga/all/sell /dev/shm
 ```
 
@@ -178,3 +171,4 @@ For "sell" host we got extra definition on price:
 ![Host level filtering](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/filters-sell.png)
 
 Be carefull when modify template Filters. It will totaly override (delete everything) in host level filtering!
+
