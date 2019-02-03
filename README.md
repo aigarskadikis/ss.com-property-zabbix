@@ -4,34 +4,35 @@
 {
   "data": [
     {
-      "{#URL}": "https://www.ss.com/msg/lv/real-estate/flats/riga/kengarags/gdkej.html",
-      "{#PLACE}": "engarags, Salaspils 7",
+      "{#URL}": "https://www.ss.com/msg/en/real-estate/flats/riga/ziepniekkalns/dkodg.html",
+      "{#PLACE}": "Ziepniekkalns, Kartupelu 16",
       "{#ROOMS}": "2",
-      "{#SQM}": "34",
-      "{#FLOOR}": "5",
-      "{#TYPE}": "ehu pr.",
-      "{#PRICE}": "240  /mn."
-    },
-    {
-      "{#URL}": "https://www.ss.com/msg/lv/real-estate/flats/riga/mangalsala/addpd.html",
-      "{#PLACE}": "Mangasala, Albatrosu 24",
-      "{#ROOMS}": "2",
-      "{#SQM}": "52",
-      "{#FLOOR}": "5",
-      "{#TYPE}": "Specpr.",
-      "{#PRICE}": "390  /mn."
-    },
-    {
-      "{#URL}": "https://www.ss.com/msg/lv/real-estate/flats/riga/katlakalns/gjgex.html",
-      "{#PLACE}": "Katlakalns, Bauskas 1",
-      "{#ROOMS}": "2",
-      "{#SQM}": "68",
+      "{#SQM}": "60",
       "{#FLOOR}": "1",
-      "{#TYPE}": "Hru.",
-      "{#PRICE}": "300  /mn."
+      "{#TYPE}": "Private",
+      "{#PRICE}": "330  /mon."
+    },
+    {
+      "{#URL}": "https://www.ss.com/msg/en/real-estate/flats/riga/kengarags/aexgx.html",
+      "{#PLACE}": "Kengarags, Maskavas 266",
+      "{#ROOMS}": "2",
+      "{#SQM}": "47",
+      "{#FLOOR}": "3",
+      "{#TYPE}": "Chrusch.",
+      "{#PRICE}": "420  /mon."
+    },
+    {
+      "{#URL}": "https://www.ss.com/msg/en/real-estate/flats/riga/teika/dplek.html",
+      "{#PLACE}": "Teika, Pikola 19",
+      "{#ROOMS}": "1",
+      "{#SQM}": "35",
+      "{#FLOOR}": "2",
+      "{#TYPE}": "Perewar",
+      "{#PRICE}": "150  /mon."
     }
   ]
 }
+
 ```
 
 ## Dependencies
@@ -47,6 +48,7 @@ mezhciems|purvciems|plyavnieki|teika
 ```
 
 #### ss.com flats hand over price
+What is the price range, eliminate paying per "day" or "week"
 ```
 Expression type: Result is TRUE, Expression:
 ^(1[0-4][0-9]|[0-9][0-9]|150) .*$
@@ -56,28 +58,19 @@ day|week
 ```
 
 #### ss.com flats hand over sqm
+Set the square metters intereseted
 ```
 Expression type: Result is TRUE, Expression:
 ^(2[1-9]|3[0-9])$
 ```
 
-#### ss.com flats hand over type
-```
-Expression type: Result is TRUE, Expression:
-^602
-```
-
 #### ss.com flats sell price
+Selling price
 ```
 Expression type: Result is TRUE, Expression:
 ^(1)?[0-9],
 ```
 
-#### ss.com flats sell type
-```
-Expression type: Result is TRUE, Expression:
-LT proj|602|M. im.
-```
 
 ### Install external script
 ```
