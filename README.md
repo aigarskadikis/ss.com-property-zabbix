@@ -36,6 +36,54 @@
 
 ## Dependencies
 
+### Global regular expressions
+
+#### ss.com property urls
+```
+Expression type: Result is TRUE
+Expression:
+mezhciems|purvciems|plyavnieki|teika
+```
+
+#### ss.com flats hand over price
+```
+Expression type: Result is TRUE
+Expression:
+^(1[0-4][0-9]|[0-9][0-9]|150) .*$
+Expression type: Result is FALSE
+Expression:
+day|week
+```
+
+#### ss.com flats hand over sqm
+```
+Expression type: Result is TRUE
+Expression:
+^(2[1-9]|3[0-9])$
+```
+
+#### ss.com flats hand over type
+```
+Expression type: Result is TRUE
+Expression:
+^602
+```
+
+#### ss.com flats sell price
+```
+Expression type: Result is TRUE
+Expression:
+^(1)?[0-9],
+```
+
+#### ss.com flats sell type
+```
+Expression type: Result is TRUE
+Expression:
+LT proj|602|M. im.
+```
+
+
 ### Install external script
 ```
 cd /usr/lib/zabbix/externalscripts
@@ -60,6 +108,7 @@ curl -sL https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -o /
 ```
 groupadd ss.com
 useradd -s /sbin/nologin -g ss.com ss.com
+#allow ro user ss.com to group zabbix
 usermod -a -G zabbix ss.com
 grep ss.com /etc/passwd
 id ss.com
@@ -86,10 +135,13 @@ jq . ~/zbx.ss.com.sell.json
 
 ## Install template
 https://github.com/catonrug/ss.com-property-zabbix/blob/master/ss.com-property.xml
+In a template there is defined
+```
+{#SQM} = ^([0-3][0-9])$
+{#URL} = @ss.com property urls
+```
 
 ## Create host
 create a host "ss.com flats hand over" and attach the template "ss.com property"
 create a host "ss.com flats sell" and attach the template "ss.com property"
-
-
 
