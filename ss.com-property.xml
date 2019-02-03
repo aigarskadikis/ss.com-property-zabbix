@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2019-02-03T17:07:33Z</date>
+    <date>2019-02-03T17:36:50Z</date>
     <groups>
         <group>
             <name>Templates/Web Monitoring</name>
@@ -263,7 +263,7 @@
                             <expression>{ss.com property:item[{#URL}].nodata(1m)}=1</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
-                            <name>{#PLACE} pa {#PRICE}</name>
+                            <name>{#PLACE} - {#PRICE}</name>
                             <correlation_mode>0</correlation_mode>
                             <correlation_tag/>
                             <url/>

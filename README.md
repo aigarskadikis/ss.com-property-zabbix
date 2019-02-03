@@ -39,6 +39,7 @@
 
 ### Global regular expressions
 
+![Global Regular Expression](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/ss.com-global-regex.png)
 
 #### ss.com property urls
 set which regions you are intereseted the most
