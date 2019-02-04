@@ -39,14 +39,19 @@
 
 ### Global regular expressions
 
+At first we need to specify the scope of interests. What is the regions we are interested? Waht price range? Square meters?
+
 ![Global Regular Expression](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/ss.com-global-regex.png)
 
 #### ss.com property urls
-set which regions you are interested the most
+set which regions you are interested the most see ![flats riga](https://www.ss.com/en/real-estate/flats/riga/)
+![Flats Riga](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/ss.com-riga-regions.png)
 ```
 Expression type: Result is TRUE, Expression:
 mezhciems|purvciems|plyavnieki|teika
 ```
+
+
 
 #### ss.com flats hand over price
 What is the price range as 00 - 150. Eliminate paying per "day" or "week"
