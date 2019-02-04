@@ -70,7 +70,7 @@ Expression type: Result is TRUE, Expression:
 ^(2[1-9]|3[0-9])$
 ```
 
-#### ss.com flats sell price
+#### ss.com flats sell price. It must be starting with from 0,000 - 19,000
 Selling price
 ```
 Expression type: Result is TRUE, Expression:
