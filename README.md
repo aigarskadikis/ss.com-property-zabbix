@@ -49,7 +49,7 @@ mezhciems|purvciems|plyavnieki|teika
 ```
 
 #### ss.com flats hand over price
-What is the price range, eliminate paying per "day" or "week"
+What is the price range as 00 - 150. Eliminate paying per "day" or "week"
 ```
 Expression type: Result is TRUE, Expression:
 ^(1[0-4][0-9]|[0-9][0-9]|150) .*$
@@ -59,7 +59,7 @@ day|week
 ```
 
 #### ss.com flats hand over sqm
-Set the square meters interested
+Set the square meters interested. The following regular expression ilustrates range from 21 - 39 square meters.
 ```
 Expression type: Result is TRUE, Expression:
 ^(2[1-9]|3[0-9])$
@@ -173,6 +173,12 @@ For "sell" host we got extra definition on price:
 ![Host level filtering](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/filters-sell.png)
 
 Be carefull when modify template Filters. It will totaly override (delete everything) in host level filtering!
+
+And event will be generate once the item matched the filer section
+![Create dummy item](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/ss.com-property-dummy-trapper-item.png)
+
+If item is no longer server on ss.com It will get instantly creared from Zabbix
+![Get off item from menu](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/ss.com-property-item-gets-off-menu.png)
 
 ## Events
 ![Events](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/ss.com-property-in-use.png)
