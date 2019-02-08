@@ -120,14 +120,14 @@ chmod -R 770 /usr/lib/zabbix/externalscripts/*
 ## Fetch and observe "hand over" data 
 ```
 cd /usr/lib/zabbix/externalscripts
-./ss-com-property-discover.sh https://www.ss.com/lv/real-estate/flats/riga/all/hand_over > ~/zbx.ss.com.hand.over.json
+./ss-com-property-discover.sh https://www.ss.com/en/real-estate/flats/riga/all/hand_over > ~/zbx.ss.com.hand.over.json
 jq . ~/zbx.ss.com.hand.over.json
 ```
 
 ## Fetch and observe "sell" data
 ```
 cd /usr/lib/zabbix/externalscripts
-./ss-com-property-discover.sh https://www.ss.com/lv/real-estate/flats/riga/all/sell > ~/zbx.ss.com.sell.json
+./ss-com-property-discover.sh https://www.ss.com/en/real-estate/flats/riga/all/sell > ~/zbx.ss.com.sell.json
 jq . ~/zbx.ss.com.sell.json
 ```
 
