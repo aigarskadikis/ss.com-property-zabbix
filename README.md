@@ -39,21 +39,20 @@
 
 ### Global regular expressions
 
-At first we need to specify the scope of interests. What is the regions we are interested? Waht price range? Square meters?
+At first we need to specify the scope of interests
 
-![Global Regular Expression](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/ss.com-global-regex.png)
 
 #### ss.com property urls
 set which regions you are interested the most see [flats riga](https://www.ss.com/en/real-estate/flats/riga/)
 ![Flats Riga](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/ss.com-riga-regions.png)
+![com-property-url](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/regex-ss-com-property-url.png)
 ```
 Expression type: Result is TRUE, Expression:
 mezhciems|purvciems|plyavnieki|teika
 ```
 
-
-
 #### ss.com flats hand over price
+![com-property-url](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/regex-ss-com-flats-hand-over-price.png)
 What is the price range as 00 - 150. Eliminate paying per "day" or "week"
 ```
 Expression type: Result is TRUE, Expression:
@@ -64,6 +63,7 @@ day|week
 ```
 
 #### ss.com flats hand over sqm
+![com-property-url](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/regex-ss-com-flats-hand-over-sqm.png)
 Set the square meters interested. The following regular expression ilustrates range from 21 - 39 square meters.
 ```
 Expression type: Result is TRUE, Expression:
@@ -71,11 +71,15 @@ Expression type: Result is TRUE, Expression:
 ```
 
 #### ss.com flats sell price. It must be starting with from 0,000 - 19,000
+![com-property-url](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/regex-ss-com-flats-sell-price.png)
 Selling price
 ```
 Expression type: Result is TRUE, Expression:
 ^(1)?[0-9],
 ```
+
+All together:
+![com-property-url](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/ss.com-global-regex.png)
 
 
 ### Install external script
