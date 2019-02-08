@@ -61,7 +61,7 @@ What is the price range as 00 - 150. Eliminate paying per "day" or "week"
 ^(1[0-4][0-9]|[0-9][0-9]|150) .*$
 ```
 
-Return FALSE for:
+Result is FALSE for:
 ```
 day|week
 ```
@@ -132,7 +132,7 @@ jq . ~/zbx.ss.com.sell.json
 ```
 
 ## Install template
-Uplead [ss.com-property.xml](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/ss.com-property.xml) to you Zabbix instance
+Upload [ss.com-property.xml](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/ss.com-property.xml) to you Zabbix instance
 
 ## Create host "ss.com flats hand over"
 1) create host with name "ss.com flats hand over"
@@ -187,8 +187,8 @@ For "sell" host we got extra definition on price:
 
 Be carefull when modify template Filters. It will totaly override (delete everything) in host level filtering!
 
-And event will be generate once the item matched the filer section
-![Create dummy item](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/ss.com-property-dummy-trapper-item.png)
+An event will be generate once the item matched the filer section
+![Create dummy item](https://github.com/catonrug/ss.com-property-zabbix/blob/master/ss.com-property-dummy-trapper-item.png?raw=true)
 
 If item is no longer server on ss.com It will get instantly creared from Zabbix
 ![Get off item from menu](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/ss.com-property-item-gets-off-menu.png)
