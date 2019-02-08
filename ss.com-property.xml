@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2019-02-03T17:36:50Z</date>
+    <date>2019-02-08T11:12:41Z</date>
     <groups>
         <group>
             <name>Templates/Web Monitoring</name>
@@ -512,7 +512,7 @@
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{ss.com property:vfs.file.size[{#ZBX.SS.COM.TEMP}].min(6h)}&gt;1K</expression>
+                            <expression>{ss.com property:vfs.file.size[{#ZBX.SS.COM.TEMP}].min(6h)}&lt;1K</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
                             <name>Files size of {#ZBX.SS.COM.TEMP} is less than 1KB</name>
