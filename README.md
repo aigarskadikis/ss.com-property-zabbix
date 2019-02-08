@@ -191,7 +191,7 @@ An event will be generate once the item matched the filer section
 ![Create dummy item](https://github.com/catonrug/ss.com-property-zabbix/blob/master/ss.com-property-dummy-trapper-item.png?raw=true)
 
 If item is no longer server on ss.com It will get instantly creared from Zabbix
-![Get off item from menu](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/ss.com-property-item-gets-off-menu.png)
+![Get off item from menu](https://github.com/catonrug/ss.com-property-zabbix/blob/master/ss.com-property-item-gets-off-menu.png?raw=true)
 
 ## Events
 ![Events](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/ss.com-property-in-use.png)
