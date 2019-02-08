@@ -42,20 +42,22 @@
 At first we need to specify the scope of interests
 
 
-#### ss.com property urls
-set which regions you are interested the most see [flats riga](https://www.ss.com/en/real-estate/flats/riga/)
+## Regions interested
+Set which regions you are interested the most see [flats riga](https://www.ss.com/en/real-estate/flats/riga/)
 ![Flats Riga](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/ss.com-riga-regions.png)
 
 In Zabbix this must be configured as:
 ![com-property-url](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/regex-ss-com-property-url.png)
+#### ss.com property urls
 ```
 Expression type: Result is TRUE, Expression:
 mezhciems|purvciems|plyavnieki|teika
 ```
 
-#### ss.com flats hand over price
+## Price range for renting
 ![com-property-url](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/regex-ss-com-flats-hand-over-price.png)
 What is the price range as 00 - 150. Eliminate paying per "day" or "week"
+#### ss.com flats hand over price
 ```
 Expression type: Result is TRUE, Expression:
 ^(1[0-4][0-9]|[0-9][0-9]|150) .*$
@@ -64,17 +66,19 @@ Expression type: Result is FALSE, Expression:
 day|week
 ```
 
-#### ss.com flats hand over sqm
+## square meters affordable
 ![com-property-url](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/regex-ss-com-flats-hand-over-sqm.png)
 Set the square meters interested. The following regular expression ilustrates range from 21 - 39 square meters.
+#### ss.com flats hand over sqm
 ```
 Expression type: Result is TRUE, Expression:
 ^(2[1-9]|3[0-9])$
 ```
 
-#### ss.com flats sell price. It must be starting with from 0,000 - 19,000
+## Price range for buying
 ![com-property-url](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/regex-ss-com-flats-sell-price.png)
-Selling price
+#### ss.com flats sell price
+It must be starting with from 0,000 - 19,000
 ```
 Expression type: Result is TRUE, Expression:
 ^(1)?[0-9],
