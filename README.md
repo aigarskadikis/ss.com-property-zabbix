@@ -50,7 +50,6 @@ In Zabbix this must be configured as:
 ![com-property-url](https://raw.githubusercontent.com/catonrug/ss.com-property-zabbix/master/regex-ss-com-property-url.png)
 #### ss.com property urls
 ```
-Expression type: Result is TRUE, Expression:
 mezhciems|purvciems|plyavnieki|teika
 ```
 
@@ -59,10 +58,11 @@ mezhciems|purvciems|plyavnieki|teika
 What is the price range as 00 - 150. Eliminate paying per "day" or "week"
 #### ss.com flats hand over price
 ```
-Expression type: Result is TRUE, Expression:
 ^(1[0-4][0-9]|[0-9][0-9]|150) .*$
+```
 
-Expression type: Result is FALSE, Expression:
+Return FALSE for:
+```
 day|week
 ```
 
@@ -71,7 +71,6 @@ day|week
 Set the square meters interested. The following regular expression ilustrates range from 21 - 39 square meters.
 #### ss.com flats hand over sqm
 ```
-Expression type: Result is TRUE, Expression:
 ^(2[1-9]|3[0-9])$
 ```
 
@@ -80,7 +79,6 @@ Expression type: Result is TRUE, Expression:
 #### ss.com flats sell price
 It must be starting with from 0,000 - 19,000
 ```
-Expression type: Result is TRUE, Expression:
 ^(1)?[0-9],
 ```
 
